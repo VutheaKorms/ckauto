@@ -52,12 +52,12 @@
 </head>
 
 <body>
-
     @if (Auth::guest())
         @yield('content')
         {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
         {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
     @else
+
     <header class="app-header navbar">
     <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">&#9776;</button>
     <a class="navbar-brand" ui-sref="app.main"></a>
@@ -109,8 +109,8 @@
     <strong>Settings</strong>
     </div>
 
-    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
-    <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>
+    <a class="dropdown-item" ui-sref-active="active" ui-sref="app.profile.search"><i class="fa fa-user"></i> Profile</a>
+    <a class="dropdown-item" ui-sref-active="active" ui-sref="app.setting"><i class="fa fa-wrench"></i> Setting</a>
     <!--<a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="badge badge-default">42</span></a>-->
     <!--<a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>-->
     <!--<div class="divider"></div>-->

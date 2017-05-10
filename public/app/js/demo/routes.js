@@ -122,6 +122,96 @@ angular
       }]
     }
   })
+
+  .state('app.profile', {
+    url: "/profile",
+    abstract: true,
+    template: '<ui-view></ui-view>',
+    ncyBreadcrumb: {
+      label: 'Profile'
+    }
+  })
+
+  .state('app.profile.search', {
+        url: '/index',
+        templateUrl: 'app/views/profile/profile.html',
+        ncyBreadcrumb: {
+          label: 'Profile'
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            // you can lazy load controllers
+            return $ocLazyLoad.load({
+              files: ['app/js/controllers/profile/index.js']
+            });
+          }]
+        }
+  })
+
+  .state('app.profile.edit', {
+        url: '/edit/:id',
+        templateUrl: 'app/views/profile/edit.html',
+        ncyBreadcrumb: {
+          label: 'Edit Profile'
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            // you can lazy load controllers
+            return $ocLazyLoad.load({
+              files: ['app/js/controllers/profile/edit.js']
+            });
+          }]
+        }
+   })
+
+  .state('app.profile.delete', {
+    url: '/delete/:id',
+    templateUrl: 'app/views/profile/delete.html',
+    ncyBreadcrumb: {
+      label: 'Delete Profile'
+    },
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['app/js/controllers/profile/edit.js']
+        });
+      }]
+    }
+  })
+
+  .state('app.profile.view', {
+    url: '/detail/:id',
+    templateUrl: 'app/views/profile/detail.html',
+    ncyBreadcrumb: {
+      label: 'View Profile'
+    },
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['app/js/controllers/profile/edit.js']
+        });
+      }]
+    }
+  })
+
+
+  .state('app.setting', {
+        url: '/setting',
+        templateUrl: 'app/views/setting.html',
+        ncyBreadcrumb: {
+          label: 'Setting'
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            // you can lazy load controllers
+            return $ocLazyLoad.load({
+              files: ['app/js/controllers/widgets.js']
+            });
+          }]
+        }
+  })
   .state('app.charts', {
     url: '/charts',
     templateUrl: 'app/views/charts.html',

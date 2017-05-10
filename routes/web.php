@@ -18,3 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/api/v1/users/{id?}', ['middleware' => 'auth.basic', function($id = null) {
+    if ($id == null) {
+        $users = App\User::all(array('id', 'name','email','created_at','active'));
+    } else {
+        $users = App\User::find($id, array('id', 'name','email','created_at','active'));
+    }
+    return Response::json(array(
+        'error' => false,
+        'users' => $users,
+        'status_code' => 200
+    ));
+}]);

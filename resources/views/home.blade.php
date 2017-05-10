@@ -7,10 +7,13 @@
     {{--</div>--}}
     <div ng-include="'app/views/common/sidebar-nav.html'" class="ng-scope"></div>
 
+
+
 </ui-view>
 
-</body>
 
+
+</body>
 
 
 

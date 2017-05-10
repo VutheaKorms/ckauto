@@ -18,33 +18,31 @@
                                     </span>
                                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                             {{--<div class="col-md-6">--}}
-                                                <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
-
-                                                @if ($errors->has('email'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                @endif
-                                            {{--</div>--}}
+                                                <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" autofocus>
                                         </div>
                                     </div>
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                            <strong style="color: red;">{{ $errors->first('email') }}</strong><br /><br />
+                                        </span>
+                                    @endif
                                     <div class="input-group mb-2">
                                     <span class="input-group-addon"><i class="icon-lock"></i>
                                     </span>
                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
                                             {{--<div class="col-md-6">--}}
-                                                <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
+                                                <input id="password" type="password" class="form-control" placeholder="Password" name="password">
 
-                                                @if ($errors->has('password'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('password') }}</strong>
-                                                    </span>
-                                                @endif
                                             {{--</div>--}}
                                         </div>
                                     </div>
-                                    </span>
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                            <strong style="color: red;">{{ $errors->first('password') }}</strong><br /><br />
+                                        </span>
+                                        @endif
+
                                     <div class="form-group">
                                         <div>
                                             <div class="checkbox">
