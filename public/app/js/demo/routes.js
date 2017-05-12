@@ -148,6 +148,22 @@ angular
         }
   })
 
+  .state('app.profile.create', {
+    url: '/create',
+    templateUrl: 'app/views/profile/create.html',
+    ncyBreadcrumb: {
+      label: 'Profile'
+    },
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['app/views/profile/create.js']
+        });
+      }]
+    }
+  })
+
   .state('app.profile.edit', {
         url: '/edit/:id',
         templateUrl: 'app/views/profile/edit.html',
@@ -158,7 +174,7 @@ angular
           loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
             // you can lazy load controllers
             return $ocLazyLoad.load({
-              files: ['app/js/controllers/profile/edit.js']
+              files: ['app/views/profile/edit.js']
             });
           }]
         }
@@ -174,7 +190,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['app/js/controllers/profile/edit.js']
+          files: ['app/views/profile/delete.js']
         });
       }]
     }
@@ -190,7 +206,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['app/js/controllers/profile/edit.js']
+          files: ['app/views/profile/detail.js']
         });
       }]
     }

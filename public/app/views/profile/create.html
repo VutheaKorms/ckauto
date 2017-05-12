@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <!--<script src="app/js/controllers/profile/index.js"></script>&ndash;&gt;-->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>-->
+</head>
+<body>
+
+<div class="animated fadeIn" ng-controller="userController">
+
+    <div class="row">
+        <div class="col-lg-11"><h2>Profile</h2></div>
+        <div class="col-lg-0"><button class="btn btn-default" type="button" ng-click="goBack()"><i class="fa fa-arrow-left"></i> Back</button></div>
+        <br/><br/>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-edit"></i>Create New User
+                    <!--<div class="card-actions">-->
+                    <!--<a href="#" class="btn-setting"><i class="icon-settings"></i></a>-->
+                    <!--<a href="#" class="btn-minimize"><i class="icon-arrow-up"></i></a>-->
+                    <!--<a href="#" class="btn-close"><i class="icon-close"></i></a>-->
+                    <!--</div>-->
+                </div>
+                <div class="card-block">
+                    <form class="form-horizontal" name="userForm" role="form" novalidate>
+
+                        <div class="alert alert-danger" ng-if="userForm.$invalid && userForm.$submitted">
+                            <h4 class="block">
+                                <strong>
+                                    Error
+                                </strong>
+                            </h4>
+                            <ul>
+                                <li ng-if="userForm.name.$error.required && userForm.$submitted">
+                                    <span>Name is required</span>
+                                </li>
+                                <li ng-if="userForm.email.$error.required && userForm.$submitted">
+                                    <span>Email is required</span>
+                                </li>
+                                <li ng-if="userForm.email.$error.email && userForm.$submitted">
+                                    <span>Email is not valid</span>
+                                </li>
+                                <li ng-if="userForm.password.$error.required && userForm.$submitted">
+                                    <span>Password is required</span>
+                                </li>
+                                <li ng-if="userForm.confirmPassword.$error.required && userForm.$submitted">
+                                    <span ng-message="compareTo">Must match the previous entry</span>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        <div class="form-group" ng-class="{ 'has-error': userForm.name.$invalid && userForm.$submitted }">
+                            <label class="form-control-label">Username</label>
+                            <div class="controls">
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input class="form-control" size="16" name="name" ng-model="user.name" type="text" placeholder="Username" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error': userForm.email.$invalid && userForm.$submitted }">
+                            <label class="form-control-label">Email</label>
+                            <div class="controls">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                    {{user.email}}
+                                    <input class="form-control" size="16" name="email" ng-model="user.email"
+                                           type="email" placeholder="Email" ng-minlength="5" ng-maxlength="20" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error': userForm.password.$invalid && userForm.$submitted }">
+                            <label class="form-control-label" for="appendedPrependedInput">Password</label>
+                            <div class="controls">
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+                                    {{user.password}}
+                                    <input id="appendedPrependedInput" class="form-control"
+                                           size="16" name="password" ng-model="user.password"
+                                           type="password" placeholder="Password" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error': userForm.confirmPassword.$invalid && userForm.$submitted }">
+                            <label class="form-control-label" for="appendedPrependedInput">Confirm Password</label>
+                            <div class="controls">
+                                <div class="input-prepend input-group">
+                                    <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+                                    <input id="appendedPrependedInput1" class="form-control" name="confirmPassword"
+                                           size="16" type="password" placeholder="Confirm Password"
+                                           required compare-to="user.password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary" ng-click="save()" ng-disabled="vm.loading">Save changes</button>
+                            <button class="btn btn-default" type="button" ng-click="back()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+
+    </div>
+</div>
+</body>
+</html>

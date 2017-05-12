@@ -1,1 +1,49 @@
-<div class="animated fadeIn">Delete</div>
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <!--<script src="app/js/controllers/profile/index.js"></script>&ndash;&gt;-->
+</head>
+<body>
+
+<div class="animated fadeIn" ng-controller="userController">
+
+    <div class="row">
+        <div class="col-lg-11"><h2>Profile</h2></div>
+        <div class="col-lg-0"><button class="btn btn-default" type="button" ng-click="goBack()"><i class="fa fa-arrow-left"></i> Back</button></div>
+        <br/><br/>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-edit"></i>Delete Profile
+                    <!--<div class="card-actions">-->
+                    <!--<a href="#" class="btn-setting"><i class="icon-settings"></i></a>-->
+                    <!--<a href="#" class="btn-minimize"><i class="icon-arrow-up"></i></a>-->
+                    <!--<a href="#" class="btn-close"><i class="icon-close"></i></a>-->
+                    <!--</div>-->
+                </div>
+                <div class="card-block">
+                    <form class="form-horizontal">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>You are about to delete &nbsp; <b><i class="title" ng-bind="details.email"></i></b></p>
+                                <p>Do you want to proceed?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" ng-click="back()">Cancel</button>
+                                <button type="button" class="btn btn-danger btn-ok">Delete</button>
+                            </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+
+    </div>
+</div>
+</body>
+</html>

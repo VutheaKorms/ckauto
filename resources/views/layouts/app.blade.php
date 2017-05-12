@@ -43,6 +43,7 @@
     <script src="app/js/directives.js"></script>
 
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([

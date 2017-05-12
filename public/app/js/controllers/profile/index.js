@@ -1,5 +1,5 @@
 var app = angular.module('app', []);
-app.controller('employeesController', function($scope, $http) {
+app.controller('employeesController', function($scope, $http, $state) {
     //retrieve employees listing from API
     var API_URL = '/api/v1/users/';
     $http.get(API_URL)
@@ -7,6 +7,10 @@ app.controller('employeesController', function($scope, $http) {
             $scope.users = response;
             console.log($scope.users);
         });
+
+    $scope.create = function() {
+        $state.go("app.profile.create");
+    }
 
     ////show modal form
     $scope.toggle = function(modalstate, id) {

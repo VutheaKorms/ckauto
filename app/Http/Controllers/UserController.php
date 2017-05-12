@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App;
+use App\User;
+use Response;
+use Input;
 
 class UserController extends Controller
 {
@@ -12,10 +14,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $respose;
+
+    public function __construct(Response $response)
+    {
+        $this->response = $response;
+    }
+
     public function index()
     {
-        $user = App\User::orderBy('created_at')->get();
-        return view('index',['user' => $user]);
+        return Response::json(User::get());
+//        $user = App\User::orderBy('created_at')->get();
+//        return view('index',['user' => $user]);
     }
 
     /**
@@ -28,15 +39,35 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        //return $request;
+//        if ($request->isMethod('put')) {
+//            $user = User::find($request->id);
+//            if (!$user) {
+//                return $this->response->errorNotFound('User Not Found');
+//            }
+//        } else {
+
+            $user = new User();
+
+            $user->name  = $request->input('name');
+            $user->email  = $request->input('email');
+            $user->password  = $request->input('password');
+            $user->active  = $request->input('active');
+            return $user;
+
+//            $user->save();
+        //}
+
+
+//        if($user->save()) {
+//            return $this->response->withItem($user, new  User());
+//        } else {
+//            return $this->response->errorInternalError('Could not updated/created a user');
+//        }
+
     }
 
     /**
@@ -79,8 +110,5 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+
 }
